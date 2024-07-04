@@ -1,3 +1,4 @@
+import 'package:admin_pc_part/config.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -23,7 +24,7 @@ class _AccountPageState extends State<AccountPage> {
   }
 
   Future<void> fetchUserData() async {
-    var url = Uri.parse('http://192.168.68.111/server/admin_data.php');
+    var url = Uri.parse('${Config.apiBaseUrl}/server/admin_data.php');
     try {
       var response = await http.post(url, body: {'UserID': widget.userID});
 

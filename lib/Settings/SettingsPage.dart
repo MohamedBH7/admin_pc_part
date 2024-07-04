@@ -4,6 +4,7 @@ import 'package:admin_pc_part/Settings/CreateAdminAccountPage.dart';
 import 'package:admin_pc_part/Settings/DeletedItemsPage.dart';
 import 'package:admin_pc_part/Settings/EmailRequestsPage.dart';
 import 'package:admin_pc_part/Settings/ManageQuantitiesPage.dart';
+import 'package:admin_pc_part/config.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -54,7 +55,7 @@ class _SettingsPageState extends State<SettingsPage> {
 
   void fetchData() async {
     final response = await http.get(Uri.parse(
-        'http://192.168.68.111/server/admin_setting.php?userID=${widget.userID}'));
+        '${Config.apiBaseUrl}/server/admin_setting.php?userID=${widget.userID}'));
 
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
@@ -307,7 +308,7 @@ class _SettingsPageState extends State<SettingsPage> {
   }
 
   void updateUserInfo(String field, String value) async {
-    final uri = Uri.parse('http://192.168.68.111/server/update_admin_info.php');
+    final uri = Uri.parse('${Config.apiBaseUrl}/server/update_admin_info.php');
     final body = {
       'userID': widget.userID,
       'field': field,

@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:admin_pc_part/Sections/AddItemPage.dart';
+import 'package:admin_pc_part/config.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:animate_do/animate_do.dart';
@@ -23,7 +24,7 @@ class _SectionPageState extends State<SectionPage> {
   }
 
   Future<List<Map<String, dynamic>>?> fetchDataForCategory(String category) async {
-    var url = "http://192.168.68.111/server/Category.php?category=$category";
+    var url = "${Config.apiBaseUrl}/server/Category.php?category=$category";
     var res = await http.get(Uri.parse(url));
 
     if (res.statusCode == 200) {
@@ -36,7 +37,7 @@ class _SectionPageState extends State<SectionPage> {
   }
 
   Future<List?> readData() async {
-    var url = "http://192.168.68.111/server/Category.php";
+    var url = "${Config.apiBaseUrl}/server/Category.php";
     var res = await http.get(Uri.parse(url));
 
     if (res.statusCode == 200) {

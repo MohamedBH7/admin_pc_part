@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:admin_pc_part/config.dart';
 import 'package:http/http.dart' as http;
 class Item {
   final String itemID;
@@ -28,7 +29,7 @@ class Item {
 
 
 class ItemService {
-  final String apiUrl = "http://192.168.68.111/server/manage_items.php";
+  final String apiUrl = "${Config.apiBaseUrl}/server/manage_items.php";
 
   Future<List<Item>> fetchItems() async {
     final response = await http.get(Uri.parse(apiUrl));

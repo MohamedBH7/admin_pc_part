@@ -1,3 +1,4 @@
+import 'package:admin_pc_part/config.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
@@ -23,7 +24,7 @@ class _DeletedItemsPageState extends State<DeletedItemsPage> {
 
   Future<void> fetchDeletedItems() async {
     try {
-      final response = await http.get(Uri.parse('http://192.168.68.111/server/fetch_deleted_items.php'));
+      final response = await http.get(Uri.parse('${Config.apiBaseUrl}/server/fetch_deleted_items.php'));
       if (response.statusCode == 200) {
         setState(() {
           items = json.decode(response.body);
@@ -42,7 +43,7 @@ class _DeletedItemsPageState extends State<DeletedItemsPage> {
 
     try {
       final response = await http.post(
-        Uri.parse('http://192.168.68.111/server/update_deleted_items.php'),
+        Uri.parse('${Config.apiBaseUrl}/server/update_deleted_items.php'),
         body: {
           'action': action,
           'LogID': logID,

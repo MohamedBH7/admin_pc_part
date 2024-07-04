@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:admin_pc_part/CategoryPage/DetailsPage.dart';
+import 'package:admin_pc_part/config.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -24,7 +25,7 @@ class _ExplorerContentPageState extends State<ExplorerContentPage> {
   }
 
   Future<void> _fetchProducts() async {
-    final response = await http.get(Uri.parse('http://192.168.68.111/server/explorer.php'));
+    final response = await http.get(Uri.parse('${Config.apiBaseUrl}/server/explorer.php'));
     if (response.statusCode == 200) {
       final jsonData = json.decode(response.body);
       setState(() {

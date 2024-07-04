@@ -1,3 +1,4 @@
+import 'package:admin_pc_part/config.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -48,7 +49,7 @@ class _LoginState extends State<Login> {
     });
 
     try {
-      var url = Uri.parse('http://192.168.68.111/server/admin_login.php');
+      var url = Uri.parse('${Config.apiBaseUrl}/server/admin_login.php');
       var response = await http.post(url, body: {
         'Email': username,
         'password': password,

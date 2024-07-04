@@ -1,4 +1,5 @@
 import 'package:admin_pc_part/Settings/UserDetail.dart';
+import 'package:admin_pc_part/config.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -24,7 +25,7 @@ class _BlockedUsersPageState extends State<BlockedUsersPage> {
 
   Future<void> fetchData() async {
     final response =
-    await http.get(Uri.parse('http://192.168.68.111/server/Block_U.php'));
+    await http.get(Uri.parse('${Config.apiBaseUrl}/server/Block_U.php'));
 
     if (response.statusCode == 200) {
       setState(() {
@@ -38,7 +39,7 @@ class _BlockedUsersPageState extends State<BlockedUsersPage> {
   Future<void> toggleBlockedStatus(
       int userID, bool currentBlockedStatus) async {
     final response = await http.get(Uri.parse(
-        'http://192.168.68.111/block_U.php?userID=$userID&blocked=${!currentBlockedStatus}'));
+        '${Config.apiBaseUrl}/block_U.php?userID=$userID&blocked=${!currentBlockedStatus}'));
 
     if (response.statusCode == 200) {
       // Update UI

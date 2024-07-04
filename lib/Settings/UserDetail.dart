@@ -1,3 +1,4 @@
+import 'package:admin_pc_part/config.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -21,7 +22,7 @@ class _UserDetailsPageState extends State<UserDetailsPage> {
   }
 
   Future<void> _toggleBlockedStatus(int userID, int blocked) async {
-    var url = 'http://192.168.68.111/server/Block_U.php?userID=$userID&blocked=$blocked';
+    var url = '${Config.apiBaseUrl}/server/Block_U.php?userID=$userID&blocked=$blocked';
     var response = await http.get(Uri.parse(url));
 
     if (response.statusCode == 200) {

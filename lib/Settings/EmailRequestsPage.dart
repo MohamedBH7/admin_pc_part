@@ -1,3 +1,4 @@
+import 'package:admin_pc_part/config.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
@@ -46,7 +47,7 @@ class User {
 
 // User service
 class UserService {
-  final String apiUrl = "http://192.168.68.111/server/email_admin.php";
+  final String apiUrl = "${Config.apiBaseUrl}/server/email_admin.php";
 
   Future<List<User>> fetchUsers() async {
     final response = await http.get(Uri.parse(apiUrl));

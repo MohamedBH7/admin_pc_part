@@ -1,3 +1,4 @@
+import 'package:admin_pc_part/config.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -11,7 +12,7 @@ class CreateAdminAccountPage extends StatelessWidget {
 
   void _createAdminAccount(BuildContext context) async {
     final response = await http.post(
-      Uri.parse('http://192.168.68.111/server/admin_Create.php'),
+      Uri.parse('${Config.apiBaseUrl}/server/admin_Create.php'),
       body: {
         'username': _usernameController.text,
         'password': _passwordController.text,

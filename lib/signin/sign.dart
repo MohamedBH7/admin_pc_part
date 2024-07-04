@@ -1,3 +1,4 @@
+import 'package:admin_pc_part/config.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
@@ -90,7 +91,7 @@ class _SignUpState extends State<Sign> {
 
     // Send form data to PHP script
     final response = await http.post(
-      Uri.parse('http://192.168.68.111/server/sign.php'),
+      Uri.parse('${Config.apiBaseUrl}/server/sign.php'),
       body: {
         'full_name': _fullName,
         'email': _email,

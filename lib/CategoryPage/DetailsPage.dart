@@ -1,3 +1,4 @@
+import 'package:admin_pc_part/config.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -71,7 +72,7 @@ class _DetailsPageState extends State<DetailsPage> {
 
   Future<List<Map<String, dynamic>>?> fetchDataForCategory(String name) async {
     var categoryName = name.split(' ').first;
-    var url = "http://192.168.68.111/server/filter.php?Name=$categoryName";
+    var url = "${Config.apiBaseUrl}/server/filter.php?Name=$categoryName";
     try {
       var res = await http.get(Uri.parse(url));
       if (res.statusCode == 200) {
@@ -102,7 +103,7 @@ class _DetailsPageState extends State<DetailsPage> {
     filterRelatedProducts();
   }
   void deleteFromStore() async {
-    var url = Uri.parse('http://192.168.68.111/server/delete_from_store.php?UserID=${widget.userID}&ItemID=${widget.itemID}');
+    var url = Uri.parse('${Config.apiBaseUrl}/server/delete_from_store.php?UserID=${widget.userID}&ItemID=${widget.itemID}');
     var response = await http.get(url);
 
     if (response.statusCode == 200) {

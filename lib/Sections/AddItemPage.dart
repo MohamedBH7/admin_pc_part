@@ -1,3 +1,4 @@
+import 'package:admin_pc_part/config.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -37,7 +38,7 @@ class _AddItemPageState extends State<AddItemPage> {
   }
 
   Future<void> addItem() async {
-    var url = "http://192.168.68.111/server/admin_AddItem.php";
+    var url = "${Config.apiBaseUrl}/server/admin_AddItem.php";
     var response = await http.post(Uri.parse(url), body: {
       'category': widget.category,
       'name': nameController.text,
